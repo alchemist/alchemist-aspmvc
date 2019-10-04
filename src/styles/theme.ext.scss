@@ -1,0 +1,28 @@
+@import "./variables";
+@import "~@alchemist/core/src/styles/helpers";
+
+@mixin tree-node($color, $tag) {
+  @include auto-gradient($color);
+  &:before { content: $tag; }
+  margin-right: 1em;
+  color: white;
+  width: 2.5em;
+  font-weight: bold;
+}
+
+#project-tree
+{
+  span[node-type="aspmvc-controller"] {
+    @include tree-node($controller-node-color, 'C');
+  }
+
+  span[node-type="aspmvc-model"]
+  {
+    @include tree-node($model-node-color, 'M');
+  }
+
+  span[node-type="aspmvc-view"]
+  {
+    @include tree-node($view-node-color, 'V');
+  }
+}
